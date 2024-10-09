@@ -1,0 +1,37 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário com Validação e Mensagem</title>
+    <script>
+        function validarFormulario() {
+            const campoA = document.getElementById("campoA").value;
+            const campoB = document.getElementById("campoB").value;
+            const mensagem = document.getElementById("mensagem");
+
+            if (Number(campoB) > Number(campoA)) {
+                mensagem.style.color = "green";
+                mensagem.textContent = "Formulário válido! O número B é maior que o número A.";
+                return true; // Formulário válido
+            } else {
+                mensagem.style.color = "red";
+                mensagem.textContent = "Erro: O número B deve ser maior que o número A.";
+                return false; // Formulário inválido
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return validarFormulario()" action="processa_formulario.php" method="POST">
+        <label for="campoA">Campo A:</label>
+        <input type="number" id="campoA" name="campoA" required><br><br>
+
+        <label for="campoB">Campo B:</label>
+        <input type="number" id="campoB" name="campoB" required><br><br>
+
+        <button type="submit">Submeter</button>
+    </form>
+
+    <p id="mensagem"></p> <!-- Elemento para exibir a mensagem -->
+</body>
+</html>
